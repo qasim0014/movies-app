@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Movie } from 'src/app/models/movie';
+import { Movie, MovieVideo } from 'src/app/models/movie';
 import { MoviesService } from 'src/app/services/movies.service';
 import { IMAGE_SIZES } from 'src/app/constants/image-sizes';
 
@@ -11,6 +11,7 @@ import { IMAGE_SIZES } from 'src/app/constants/image-sizes';
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
   movie: Movie | null = null;
+  movieVideos: MovieVideo[] = [];
   imagesSizes = IMAGE_SIZES;
   similarMovies: Movie[] = [];
 
@@ -19,6 +20,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.params.pipe().subscribe(({ id }) => {
       this.getMovie(id);
+      this.getMovieVideos(id);
     });
   }
 
@@ -29,6 +31,12 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   getMovie(id: string) {
     this.moviesService.getMovie(id).subscribe((movieData) => {
       this.movie = movieData;
+    });
+  }
+
+  getMovieVideos(id: any) {
+    this.moviesService.getMovieVideos(id).subscribe((movieVideoData) => {
+      this.movieVideos = movieVideoData;
     });
   }
 }
