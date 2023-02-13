@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SliderComponent } from './components/sliders/sliders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
+import { MovieItemComponent } from './components/movie-item/movie-item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ItemsBannerComponent } from './components/items-banner/items-banner.com
     HomeComponent,
     MoviesComponent,
     SliderComponent,
-    ItemsBannerComponent
+    ItemsBannerComponent,
+    MovieItemComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
   providers: [],
