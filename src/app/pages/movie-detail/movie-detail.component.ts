@@ -11,6 +11,7 @@ import { IMAGE_SIZES } from 'src/app/constants/image-sizes';
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
   movie: Movie | null = null;
+  imagesSizes = IMAGE_SIZES;
   similarMovies: Movie[] = [];
 
   constructor(private route: ActivatedRoute, private moviesService: MoviesService) {}
