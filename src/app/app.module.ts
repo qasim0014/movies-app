@@ -7,6 +7,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
 import { ImageModule } from 'primeng/image';
 import { CarouselModule } from 'primeng/carousel';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -42,7 +43,8 @@ import { GenresComponent } from './pages/genres/genres.component';
     PaginatorModule,
     TabViewModule,
     ImageModule,
-    CarouselModule
+    CarouselModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
