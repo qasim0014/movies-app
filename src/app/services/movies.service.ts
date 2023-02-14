@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Movie, MovieDto, MovieImages, MovieVideoDto, MovieCredits } from '../models/movie';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
+import { GenresDto } from '../models/genre';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,28 @@ export class MoviesService {
     return this.http.get<MovieCredits>(
       `${this.baseUrl}/movie/${id}/credits?api_key=${this.apiKey}`
     );
+  }
+
+  getMovieGenres() {
+    return this.http.get<GenresDto>(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`).pipe(
+      switchMap((res) => {
+        return of(res.genres);
+      })
+    );
+  }
+
+  getMovieByGenre(genreId: string, page: number) {
+    console.log(
+      `${this.baseUrl}/discover/movie/?with_genres=${genreId}&page=${page}&api_key=${this.apiKey}`
+    );
+    return this.http
+      .get<MovieDto>(
+        `${this.baseUrl}/discover/movie/?with_genres=${genreId}&page=${page}&api_key=${this.apiKey}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
   }
 }

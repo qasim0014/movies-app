@@ -18,6 +18,7 @@ import { ItemsBannerComponent } from './components/items-banner/items-banner.com
 import { ItemComponent } from './components/item/item.component';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
+import { GenresComponent } from './pages/genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VideoEmbedComponent } from './components/video-embed/video-embed.compon
     ItemsBannerComponent,
     ItemComponent,
     MovieDetailComponent,
-    VideoEmbedComponent
+    VideoEmbedComponent,
+    GenresComponent
   ],
   imports: [
     BrowserModule,
