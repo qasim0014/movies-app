@@ -22,9 +22,22 @@ export class MoviesService {
     );
   }
 
-  getUpcomingMoviesByPage(page: number) {
+  // getUpcomingMoviesByPage(page: number) {
+  //   return this.http
+  //     .get<MovieDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`)
+  //     .pipe(
+  //       switchMap((res) => {
+  //         return of(res.results);
+  //       })
+  //     );
+  // }
+
+  getSearchedMovies(page: number, searchValue?: string) {
+    const uri = searchValue ? '/search/movie' : '/movie/popular';
     return this.http
-      .get<MovieDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`)
+      .get<MovieDto>(
+        `${this.baseUrl}${uri}?page=${page}&api_key=${this.apiKey}&query=${searchValue}`
+      )
       .pipe(
         switchMap((res) => {
           return of(res.results);
